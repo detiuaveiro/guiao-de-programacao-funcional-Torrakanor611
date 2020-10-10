@@ -1,3 +1,5 @@
+import copy
+
 #Exercicio 1.1
 def comprimento(lista):
 	if lista == []:
@@ -85,33 +87,54 @@ def junta_ordenado(lista1, lista2):
 
 	return x + y + junta_ordenado(lista1[1:], lista2[1:]) 
 
-# #Exercicio 2.1
-# def separar(lista):
-# 	if lista == []:
-# 		return []
+#Exercicio 2.1
+def separar(lista):
+	if lista == []:
+		return []
 
-# 	print(type([lista[0][0]]))
-# 	print(type([lista[0][1]]))
+	lista = separar_aux(lista)
+	# print(lista)
+
+	l1 = []
+	l2 = []
+
+	for i in range(0, len(lista)):
+		# print(i)
+		if i % 2 == 0:
+			l1.append(lista[i])
+		else:
+			l2.append(lista[i])
 	
-# 	aux = [lista[0][0]] + [lista[0][1]] + separar(lista[1:])
+	return(l1, l2)
 
-# 	# posições pares(índices impares) pertencem ao segundo tuplo a devolver
-
-# 	t1 = []
-# 	t2 = []
-
-# 	for i in range(0, len(aux) - 1):
-# 		if not i % 2 == 0:
-# 			t2.append(lista[i])
-# 			continue
-# 		t1.append(lista[i])
-
-# 	return (t1, t2)
+def separar_aux(lista):
+	if lista == []:
+		return []
+	return [lista[0][0]] + [lista[0][1]] + separar_aux(lista[1:])
 
 
 #Exercicio 2.2
 def remove_e_conta(lista, elem):
+	# if lista == []:
+	# 	return []
+	
+	# lista_aux = copy.deepcopy(lista)
+	# count = 0
+
+	# remove_e_conta_aux(lista, lista_aux, elem, count)
+
+	# return (lista_aux, count)
 	pass
+
+def remove_e_conta_aux(lista, lista_aux, elem, count):
+	if lista == []:
+		return []
+	
+	if lista[0] == elem:
+		lista_aux.remove(lista[0])
+		count = count + 1
+
+	remove_e_conta_aux(lista[1:], lista_aux, elem, count)
 
 #Exercicio 3.1
 def cabeca(lista):
