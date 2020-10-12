@@ -85,7 +85,12 @@ def junta_ordenado(lista1, lista2):
 	if x == [] and y == []:
 		return []
 
-	return x + y + junta_ordenado(lista1[1:], lista2[1:]) 
+	return x + y + junta_ordenado(lista1[1:], lista2[1:])
+
+# #2.1
+# def separar(lista):
+# 	if not lista == []:
+# 		if
 
 #Exercicio 2.1
 def separar(lista):
@@ -113,28 +118,42 @@ def separar_aux(lista):
 	return [lista[0][0]] + [lista[0][1]] + separar_aux(lista[1:])
 
 
-#Exercicio 2.2
+# #Exercicio 2.2
+# def remove_e_conta(lista, elem):
+# 	# if lista == []:
+# 	# 	return []
+	
+# 	# lista_aux = copy.deepcopy(lista)
+# 	# count = 0
+
+# 	# remove_e_conta_aux(lista, lista_aux, elem, count)
+
+# 	# return (lista_aux, count)
+# 	pass
+
+# def remove_e_conta_aux(lista, lista_aux, elem, count):
+# 	if lista == []:
+# 		return []
+	
+# 	if lista[0] == elem:
+# 		lista_aux.remove(lista[0])
+# 		count = count + 1
+
+# 	remove_e_conta_aux(lista[1:], lista_aux, elem, count)
+
+count = 0
+
 def remove_e_conta(lista, elem):
-	# if lista == []:
-	# 	return []
-	
-	# lista_aux = copy.deepcopy(lista)
-	# count = 0
 
-	# remove_e_conta_aux(lista, lista_aux, elem, count)
+	global count
 
-	# return (lista_aux, count)
-	pass
-
-def remove_e_conta_aux(lista, lista_aux, elem, count):
-	if lista == []:
-		return []
-	
-	if lista[0] == elem:
-		lista_aux.remove(lista[0])
-		count = count + 1
-
-	remove_e_conta_aux(lista[1:], lista_aux, elem, count)
+	if not elem in lista:
+		return (lista, count)
+	else:
+		lista.remove(elem)
+		#print(lista)
+		count = count +1
+		return remove_e_conta(lista, elem)
 
 #Exercicio 3.1
 def cabeca(lista):
