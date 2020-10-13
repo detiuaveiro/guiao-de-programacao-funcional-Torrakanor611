@@ -92,30 +92,44 @@ def junta_ordenado(lista1, lista2):
 # 	if not lista == []:
 # 		if
 
+# #Exercicio 2.1
+# def separar(lista):
+# 	if lista == []:
+# 		return []
+
+# 	lista = separar_aux(lista)
+# 	# print(lista)
+
+# 	l1 = []
+# 	l2 = []
+
+# 	for i in range(0, len(lista)):
+# 		# print(i)
+# 		if i % 2 == 0:
+# 			l1.append(lista[i])
+# 		else:
+# 			l2.append(lista[i])
+	
+# 	return(l1, l2)
+
+# def separar_aux(lista):
+# 	if lista == []:
+# 		return []
+# 	return [lista[0][0]] + [lista[0][1]] + separar_aux(lista[1:])
+
 #Exercicio 2.1
 def separar(lista):
 	if lista == []:
-		return []
+		return ([], [])
 
-	lista = separar_aux(lista)
-	# print(lista)
+	tuplo = lista[len(lista) - 1]
 
-	l1 = []
-	l2 = []
+	l1, l2 = separar(lista[:(len(lista) - 1)])
 
-	for i in range(0, len(lista)):
-		# print(i)
-		if i % 2 == 0:
-			l1.append(lista[i])
-		else:
-			l2.append(lista[i])
-	
-	return(l1, l2)
+	l1.append(tuplo[0])
+	l2.append(tuplo[1])
 
-def separar_aux(lista):
-	if lista == []:
-		return []
-	return [lista[0][0]] + [lista[0][1]] + separar_aux(lista[1:])
+	return (l1, l2)
 
 
 # #Exercicio 2.2
@@ -141,19 +155,33 @@ def separar_aux(lista):
 
 # 	remove_e_conta_aux(lista[1:], lista_aux, elem, count)
 
-count = 0
+# count = 0
 
+# def remove_e_conta(lista, elem):
+
+# 	global count
+
+# 	if not elem in lista:
+# 		return (lista, count)
+# 	else:
+# 		lista.remove(elem)
+# 		#print(lista)
+# 		count = count +1
+# 		return remove_e_conta(lista, elem)
+
+#Exercicio 2.2
 def remove_e_conta(lista, elem):
+	if lista == []:
+		return [], 0
 
-	global count
+	value = lista[0]
 
-	if not elem in lista:
-		return (lista, count)
-	else:
-		lista.remove(elem)
-		#print(lista)
-		count = count +1
-		return remove_e_conta(lista, elem)
+	lista, count = remove_e_conta(lista[1:], elem)
+
+	if value == elem:
+		return 
+
+
 
 #Exercicio 3.1
 def cabeca(lista):
