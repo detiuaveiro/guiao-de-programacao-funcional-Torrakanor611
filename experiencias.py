@@ -1,5 +1,5 @@
 from aula1 import capicua as capi
-from aula1 import separar
+from aula1 import separar, cabeca
 
 # def main():
 lista = [1,2,3,4,5]
@@ -23,6 +23,4 @@ print(lista[1:])
 
 separar(lista)
 
-
-# if __name__ == '__main__':
-#     main()
+print(cabeca([2,3,4,5,5,6,7,8]))

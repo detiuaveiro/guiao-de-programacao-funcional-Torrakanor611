@@ -1,4 +1,5 @@
 import copy
+import sys
 
 #Exercicio 1.1
 def comprimento(lista):
@@ -174,31 +175,91 @@ def remove_e_conta(lista, elem):
 	if lista == []:
 		return [], 0
 
-	value = lista[0]
+	value = lista[len(lista) - 1]
 
-	lista, count = remove_e_conta(lista[1:], elem)
+	lista, count = remove_e_conta(lista[:len(lista) - 1], elem)
 
 	if value == elem:
-		return 
-
+		count = count + 1
+		return (lista, count)
+	else:
+		lista.append(value)
+		return (lista, count)
 
 
 #Exercicio 3.1
 def cabeca(lista):
-	pass
+	if lista == [] or not type(lista) == list:
+		return None
+	elif len(lista) == 1:
+		return lista[0]
+	else:
+		return cabeca(lista[:len(lista) - 1])
+
+# print(cabeca([2,3,4,5,6,7]))
 
 #Exercicio 3.2
 def cauda(lista):
-	pass
+	return lista[:lista[:len(lista) - 1]]
 
 #Exercicio 3.3
 def juntar(l1, l2):
-    pass
+	if not len(l1) == len(l2) or not type(l1) == list or not type(l2) == list:
+		return None
+
+	if l1 == [] or l2 == []:
+		return []
+
+	v1 = l1[len(l1) - 1]
+	v2 = l2[len(l2) - 1]
+
+	lista = juntar(l1[:len(l1) - 1], l2[:len(l2) - 1])
+
+	lista.append((v1, v2))
+
+	return lista
+
+# print(juntar([2,3,4,5,6], [2,9,4,9,6]))
 
 #Exercicio 3.4
 def menor(lista):
-	pass
+	if not type(lista) == list or lista == []:
+		return None
 
+	if len(lista) == 1:
+		min = lista[0]
+		return min
+
+	value = lista[0]
+
+	min = menor(lista[1:])
+
+	if value < min:
+		min = value
+
+	return min
+
+print(menor([]))
+ 
 #Exercicio 3.6
 def max_min(lista):
-	pass
+	if not type(lista) == list or lista == []:
+		return None
+
+	# first value of list is consecutive the 1st min and max
+	if len(lista) == 1:
+		return (lista[0], lista[0])
+
+	aux_min = lista[0]
+	aux_max = lista[0]
+
+	min, max = max_min(lista[1:])
+
+	if aux_max > max:
+		max = aux_max
+	if aux_min < min:
+		min = aux_min
+
+	return (min, max)
+
+# print(max_min([1,2,3,4,5567,3, -5, 8]))
