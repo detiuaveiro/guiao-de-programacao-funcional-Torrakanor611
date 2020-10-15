@@ -1,17 +1,22 @@
+import math
+
 #Exercicio 4.1
-impar = None
+impar = lambda x : not x % 2 == 0
 
 #Exercicio 4.2
-positivo = None
+positivo = lambda x : x > 0
 
 #Exercicio 4.3
-comparar_modulo = None
+comparar_modulo = lambda x, y : math.fabs(x) < math.fabs(y)
 
 #Exercicio 4.4
-cart2pol = None
+cart2pol = lambda x, y : (math.sqrt( x * x + y * y ), math.atan(y/x)) 
 
 #Exercicio 4.5
-ex5 = None
+def aux_ex5(f, g, h):
+    return lambda x, y, z : h(f(x,y), g(y,z))
+    
+ex5 = lambda f, g, h : aux_ex5(f, g, h)
 
 #Exercicio 4.6
 def quantificador_universal(lista, f):

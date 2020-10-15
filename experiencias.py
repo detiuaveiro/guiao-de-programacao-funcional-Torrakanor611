@@ -1,5 +1,6 @@
 from aula1 import capicua as capi
 from aula1 import separar, cabeca
+from aula2 import comparar_modulo
 
 # def main():
 lista = [1,2,3,4,5]
@@ -24,3 +25,5 @@ print(lista[1:])
 separar(lista)
 
 print(cabeca([2,3,4,5,5,6,7,8]))
+
+print(comparar_modulo(34, 3))
