@@ -1,5 +1,6 @@
 import math
 from functools import reduce
+import numpy as np
 
 #Exercicio 4.1
 impar = lambda x : not x % 2 == 0
@@ -10,8 +11,15 @@ positivo = lambda x : x > 0
 #Exercicio 4.3
 comparar_modulo = lambda x, y : math.fabs(x) < math.fabs(y)
 
+# 
 #Exercicio 4.4
-cart2pol = lambda x, y : (math.sqrt( x * x + y * y ), math.atan(y/x)) 
+cart2pol = lambda x, y : (math.sqrt(x * x + y**2), np.arctan2(y , x))
+
+# print(cart2pol(1, 1))
+# print(cart2pol(1, -1))
+# print(cart2pol(-1, 1))
+# print(cart2pol(-1, -1))
+
 
 #Exercicio 4.5
 # def aux_ex5(f, g, h):
@@ -51,17 +59,41 @@ def sub_conjunto(l1, l2):
 print(sub_conjunto([2,3,4], [2,3,4,5,6]))
 print(sub_conjunto([7,8,9], [2,3,4,5,6]))
     
+# # tentar com reduce
+# #Exercicio 4.9
+# def ordem(lista, f):
+#     if len(lista) == 1:
+#         return lista[0]     # será o último índice da lista inicial
+
+#     m = ordem(lista[1:], f)
+
+#     #return lista[0] if f(lista[0], m) else m
+
+#     if f(lista[0], m):
+#         return lista[0]
+    
+#     return m
 
 #Exercicio 4.9
-def aux(f):
-    return lambda x, y : f(x, y)
-
 def ordem(lista, f):
-    answer = reduce(lambda x, y : int(x < y), lista, 0)
-    #print(answer)
-    return answer
+    if len(lista) == 1:
+        return lista[0]
 
-print(ordem([1,-1,4,0], lambda x,y: x < y))
+    m = lista[0]
+
+    c = ordem(lista[1:], f)
+
+    if f(m, c):
+        return m
+
+    return c
+
+print(ordem([2,3,4,5,6,7], lambda x, y : x < y))
+print(ordem([10,9,8,2,7,8,9,10,11], lambda x, y : x < y))
+print(ordem([10,9,8,6,7,8,9,10,17,18], lambda x, y : x < y))
+print(ordem([10,9,8,2,7,8,9,10,17,18], lambda x, y : x < y))
+print(ordem([-4,8,6,-6,1,-12,1,2,3,7,8], lambda x, y : x < y))
+
 
 #Exercicio 4.10
 def filtrar_ordem(lista, f):
