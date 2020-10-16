@@ -239,7 +239,7 @@ def menor(lista):
 
 	return min
 
-print(menor([]))
+# print(menor([]))
  
 #Exercicio 3.6
 def max_min(lista):
