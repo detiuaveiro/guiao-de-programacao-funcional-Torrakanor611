@@ -56,8 +56,8 @@ def sub_conjunto(l1, l2):
         return True
     return (l1[0] in l2) and sub_conjunto(l1[1:], l2)
 
-print(sub_conjunto([2,3,4], [2,3,4,5,6]))
-print(sub_conjunto([7,8,9], [2,3,4,5,6]))
+# print(sub_conjunto([2,3,4], [2,3,4,5,6]))
+# print(sub_conjunto([7,8,9], [2,3,4,5,6]))
     
 # # tentar com reduce
 # #Exercicio 4.9
@@ -88,16 +88,34 @@ def ordem(lista, f):
 
     return c
 
-print(ordem([2,3,4,5,6,7], lambda x, y : x < y))
-print(ordem([10,9,8,2,7,8,9,10,11], lambda x, y : x < y))
-print(ordem([10,9,8,6,7,8,9,10,17,18], lambda x, y : x < y))
-print(ordem([10,9,8,2,7,8,9,10,17,18], lambda x, y : x < y))
-print(ordem([-4,8,6,-6,1,-12,1,2,3,7,8], lambda x, y : x < y))
+# print(ordem([2,3,4,5,6,7], lambda x, y : x < y))
+# print(ordem([10,9,8,2,7,8,9,10,11], lambda x, y : x < y))
+# print(ordem([10,9,8,6,7,8,9,10,17,18], lambda x, y : x < y))
+# print(ordem([10,9,8,2,7,8,9,10,17,18], lambda x, y : x < y))
+# print(ordem([-4,8,6,-6,1,-12,1,2,3,7,8], lambda x, y : x < y))
 
 
 #Exercicio 4.10
 def filtrar_ordem(lista, f):
-    pass
+    if len(lista) == 1:
+        return lista[0], []
+
+    last = lista[len(lista) - 1]
+
+    c, l1 = filtrar_ordem(lista[:(len(lista) - 1)], f)
+
+
+    print(c, last, l1)
+
+    if f(c, last):
+        return last, l1
+
+    l1.append(last)
+
+    return c, l1
+
+print([1,-1,4,0])
+print(filtrar_ordem([1,-1,4,0], lambda x, y: x < y))
 
 #Exercicio 5.2
 def ordenar_seleccao(lista, ordem):
