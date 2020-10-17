@@ -87,9 +87,20 @@ def junta_ordenado(lista1, lista2):
 		return []
 
 	return x + y + junta_ordenado(lista1[1:], lista2[1:])
+#Exercício 1.10
+def subconjuntos(conj):
+	if conj == []:
+		return [[]]
 
-def ex2_10():
-	pass
+	lst_conj = subconjuntos(conj[1:])
+
+	lst_conj2 = [ [conj[0]] + s for s in lst_conj ]
+
+	# print(lst_conj2)
+
+	return lst_conj + lst_conj2
+
+# print(subconjuntos([1,2,3]))
 
 # #2.1
 # def separar(lista):
