@@ -88,6 +88,9 @@ def junta_ordenado(lista1, lista2):
 
 	return x + y + junta_ordenado(lista1[1:], lista2[1:])
 
+def ex2_10():
+	pass
+
 # #2.1
 # def separar(lista):
 # 	if not lista == []:
@@ -186,6 +189,21 @@ def remove_e_conta(lista, elem):
 		lista.append(value)
 		return (lista, count)
 
+#Exercício 2.3
+def ex2_3(lista):
+	if lista == []:
+		return []
+	lista_aux, count = remove_e_conta(lista, lista[0])
+	answer = ex2_3(lista_aux)
+
+	# answer.append((lista[0], count))
+
+	answer.insert(0, (lista[0], count))
+
+	return answer
+
+# print(ex2_3([2,1,6,2,5,5,2,5,2]))
+
 
 #Exercicio 3.1
 def cabeca(lista):
@@ -263,3 +281,9 @@ def max_min(lista):
 	return (min, max)
 
 # print(max_min([1,2,3,4,5567,3, -5, 8]))
+
+# #Exercício 3.8
+# def ex3_8(lista):
+# 	if lista == []:
+# 		media = 
+# 		return []
