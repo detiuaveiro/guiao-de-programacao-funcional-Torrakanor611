@@ -87,6 +87,7 @@ def junta_ordenado(lista1, lista2):
 		return []
 
 	return x + y + junta_ordenado(lista1[1:], lista2[1:])
+	
 #Exercício 1.10
 def subconjuntos(conj):
 	if conj == []:
